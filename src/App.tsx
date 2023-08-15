@@ -1,25 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Button } from 'antd';
+import { Button as BluePrintButton } from "@blueprintjs/core";
+import { Button as MUIButton, ButtonProps } from '@mui/material';
+
 
 function App() {
+  const handleButtonClick = () => {
+    alert('Clicked')
+}
+
+  const buttonProps: ButtonProps = {
+    color: 'success',
+    variant: 'contained'
+}
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+           <p>Ant Disign</p>
+           <div className={'wrapper'}>
+               <Button type={'primary'} onClick={handleButtonClick}>Click Me</Button>
+               <Button type={'primary'} disabled>Disabled</Button>
+           </div>
+           <p>Blueprint</p>
+           <div className={'wrapper'}>
+               <BluePrintButton onClick={handleButtonClick}>Click Me</BluePrintButton>
+               <BluePrintButton disabled>Disabled</BluePrintButton>
+           </div>
+           <p>Material UI</p>
+           <div className={'wrapper'}>
+               <MUIButton {...buttonProps} onClick={handleButtonClick}>Click Me</MUIButton>
+               <MUIButton {...buttonProps} disabled>Disabled</MUIButton>
+           </div>
+       </div>
   );
 }
 
